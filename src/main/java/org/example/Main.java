@@ -56,6 +56,12 @@ public class Main {
         System.out.println("Armored Character " +  myArmoredChar.takeDamage(100));
 
 
+        // inheriting variables & access rules
+        System.out.println("\n--- 4️⃣ Inheriting Variables & Access Rules ---");
+        CheckingAccount myCheckingAccount = new CheckingAccount(100);
+        myCheckingAccount.deductMonthlyFee();
+
+
 
 
 
@@ -63,6 +69,39 @@ public class Main {
 
 
 }
+
+class BankAccount{
+    protected double balance;
+
+    public BankAccount(double startingBalance){
+        this.balance = startingBalance;
+    }
+
+    public double getBalance(){
+        return this.balance;
+    }
+
+    // public setter for balance
+    public void setBalance(double balance) {
+        this.balance = balance;
+    }
+}
+
+class CheckingAccount extends BankAccount{
+    private double fee = 5.0;
+
+    public CheckingAccount(double startingBalance){
+        super(startingBalance);
+    }
+
+    public void deductMonthlyFee(){
+        // fix issue using encapsulation concept
+        setBalance(getBalance() - fee);
+        System.out.println("Fee deducted. New Balance: " + getBalance());
+
+    }
+}
+
 
 class GameCharacter{
 
